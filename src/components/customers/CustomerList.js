@@ -1,29 +1,42 @@
 import React, { useEffect, useState } from "react"
 
 export const CustomerList = () => {
-    const [customers, assignCustomers] = useState([])
+    const [customers, setCustomers] = useState([])
+    const [message, setMessage] = useState("")
 
     useEffect(
         () => {
             fetch("http://localhost:8088/customers")
                 .then(res => res.json())
-                .then(
-                    (customersObject) => { assignCustomers(customersObject)}
-                )
+                .then((data) => {
+                    setCustomers(data)
+                })
         },
         []
     )
 
+    useEffect(
+        () => {
+            if(customers.length === 1) {
+                setMessage("you have 1 customer!")
+            } else {
+                setMessage(`you have ${customers.length} customers!`)
+            }
+
+        },
+        [customers]
+    )
+
     return (
         <>
-
-        {
-            customers.map(
-                (customer) => { 
-                    return <h2 key={`customer--${customer.id}`}>{customer.name}</h2>
-                }
-            )
-        }
+            <div>{message}</div>
+            {
+                customers.map(
+                    (customerObject) => {
+                        return <p key={`customer--${customerObject.id}`}>{customerObject.name}</p>
+                    }
+                )
+            }
         </>
     )
 }
