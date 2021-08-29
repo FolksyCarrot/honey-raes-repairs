@@ -1,27 +1,51 @@
-import React, {useState, useEffect} from "react"
+import React, { useEffect, useState } from "react"
 
 export const EmployeeList = () => {
-    const [employee, setEmployee] = useState([])
+    const [employees, changeEmployee] = useState([])
+    const [employeeSpecialty, setEmployeeSpecialty] = useState("")
 
-    useEffect(() => {
-        fetch("http://localhost:8088/employees")
-        .then (res => res.json())
-        .then (
-            (employeeArray) => {setEmployee(employeeArray)})
-    
-    }, []
+    useEffect(
+        () => {
+            fetch("http://localhost:8088/employees")
+                .then(res => res.json())
+                .then((data) => {
+                    changeEmployee(data)
+                })
+        },
+        []
     )
+
+    useEffect(() => { 
+        const specialties = employees.map(employee => employee.specialty)
+        setEmployeeSpecialty(specialties.join(", "))
+
+
+
+        /* employees.map(
+            (employee) => setEmployeeSpecialty(employee.specialty)
+        ).join(",")
+
+
+
+        /*
+            1. Use .map() to get the specialty of each employee
+            2. Then update a state variable to be a comma-separated string
+                (e.g. "iPhone, Printers, ...")
+        */
+    }, [employees])
 
     return (
         <>
+            <div>
+                Specialties: {employeeSpecialty}
+            </div>
             {
-                employee.map(
-                    (employeeObject) => {return <h3 key={`employee--${employeeObject.id}`}>{employeeObject.name}</h3>
-                    })
+                employees.map(
+                    (employee) => {
+                        return <p key={`employee--${employee.id}`}>{employee.name}</p>
+                    }
+                )
             }
         </>
     )
 }
-
-
-
