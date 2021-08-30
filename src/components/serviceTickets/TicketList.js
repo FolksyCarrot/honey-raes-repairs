@@ -18,11 +18,12 @@ export const TicketList = () => {
         <>
             {
                 tickets.map((ticket) => {
-                    return <p key={`ticket--${ticket.id}`}>{ticket.description} was a problem submitted by {ticket.customer.name}
-                    and will be handled by {ticket.employee.name}
+                    return <p key={`ticket--${ticket.id}`}>{ticket.description} was a problem submitted by {ticket.customer.name} and
+                    will be handled by {ticket.employee.name}
                     </p>
                 })
             }
         </>
     )
 }
+
