@@ -1,7 +1,9 @@
-import React, { useEffect, useState } from "react"
+import React, { useEffect, useState} from "react"
+import { useHistory } from "react-router-dom"
 
-export const TicketList = () => {
+export const TicketList = ({messageToDisplay}) => {
     const [tickets, setTickets] = useState([])
+    const history = useHistory()
 
     useEffect(
         () => {
@@ -16,6 +18,11 @@ export const TicketList = () => {
 
     return (
         <>
+            {messageToDisplay}
+            <div>
+                <button onClick={() => history.push("/ServiceTickets/create")}>Create Ticket</button>
+            </div>
+
             {
                 tickets.map((ticket) => {
                     return <p key={`ticket--${ticket.id}`}>{ticket.description} was a problem submitted by {ticket.customer.name} and
