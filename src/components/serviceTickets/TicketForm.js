@@ -32,7 +32,7 @@ const history = useHistory()
         
         return fetch("http://localhost:8088/serviceTickets", fetchOption)
             .then(() => {
-                history.push("/ServiceTickets")
+                history.push("/serviceTickets")
             })
     }
    

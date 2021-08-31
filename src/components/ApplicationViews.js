@@ -4,6 +4,7 @@ import { EmployeeList } from "./employees/EmployeeList.js"
 import { CustomerList } from "./customers/CustomerList.js"
 import { TicketList } from "./serviceTickets/TicketList.js"
 import { TicketForm } from "./serviceTickets/TicketForm.js"
+import { EmployeeForm } from "./employees/EmployeeForm.js"
 
 export const ApplicationViews = () => {
     const [junk, setJunk] = useState('Scott is evil')
@@ -13,8 +14,12 @@ export const ApplicationViews = () => {
                 <CustomerList />
             </Route>
 
-            <Route path="/employees">
+            <Route exact path="/employees">
                 <EmployeeList />
+            </Route>
+
+            <Route  path="/employees/create">
+                <EmployeeForm />
             </Route>
 
             <Route  exact path="/ServiceTickets">
@@ -24,6 +29,7 @@ export const ApplicationViews = () => {
             <Route  path="/ServiceTickets/create">
                 <TicketForm />
             </Route>
+            
         </>
     )
 }
