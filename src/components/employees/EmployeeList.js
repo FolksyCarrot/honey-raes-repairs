@@ -39,7 +39,7 @@ export const EmployeeList = () => {
     return (
         <>
         <div>
-            <button onClick={() => history.push("./employees/create")
+            <button onClick={() => history.push("./employees/employeeForm")
             }> New Employee</button>
         </div>
 
