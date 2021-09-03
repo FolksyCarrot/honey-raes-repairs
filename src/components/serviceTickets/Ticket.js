@@ -11,7 +11,8 @@ export const Ticket = () => {
         () => { 
             fetch(`http://localhost:8088/serviceTickets/${ticketId}?_expand=customer&_expand=employee`)
                 .then(res => res.json())
-                .then(set)
+                .then(
+                    (data) => set(data))
         },
         [ ticketId ]  // Above function runs when the value of ticketId change
     )
@@ -36,9 +37,6 @@ export const Ticket = () => {
             },
             body: JSON.stringify(newEmployeeObject)
         })
-        
-        .then(fetch ("http://localhost:8088/serviceTickets?_expand=customer&_expand=employee"))
-        .then ( res => res.json())
         
         .then(
             history.push("/serviceTickets")
