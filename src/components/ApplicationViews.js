@@ -32,7 +32,7 @@ export const ApplicationViews = () => {
                 <TicketForm />
             </Route>
             
-            <Route exact path="/tickets/:ticketId(\d+)">
+            <Route exact path="/serviceTickets/:ticketId(\d+)">
                 <Ticket />
             </Route>
 

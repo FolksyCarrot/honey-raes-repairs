@@ -28,7 +28,7 @@ export const TicketList = ({messageToDisplay}) => {
             {
                 tickets.map((ticket) => {
                   return  <p className={ticket.emergency ? "emergency" : ""} key ={ticket.id}>
-                    {ticket.emergency ? "🚑" : ""}  <Link to={`/tickets/${ticket.id}`}>{ticket.description}</Link>
+                    {ticket.emergency ? "🚑" : ""}  <Link to={`/serviceTickets/${ticket.id}`}>{ticket.description}</Link>
  submitted by {ticket.customer.name} and worked on by {ticket.employee.name}
                 </p>
             
