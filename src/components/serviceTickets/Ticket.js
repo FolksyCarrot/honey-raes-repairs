@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react"
 import { useHistory, useParams } from "react-router-dom"
+import { getAllEmployees } from "../ApiManager"
 
 export const Ticket = () => {
     const [ticket, set] = useState({})  // State variable for current ticket object
@@ -45,8 +46,7 @@ export const Ticket = () => {
 
     useEffect(
         () => {
-            fetch(`http://localhost:8088/employees`)
-                .then(res => res.json())
+            getAllEmployees()
                 .then(
                     (data) => {
                         setEmployees(data)

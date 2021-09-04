@@ -1,5 +1,6 @@
 import React, { useEffect, useState} from "react"
 import { useParams } from "react-router-dom"
+import { getAllEmployeeId } from "../ApiManager"
 
 export const Employee = () => {
     const [employee, setEmployee]= useState({})
