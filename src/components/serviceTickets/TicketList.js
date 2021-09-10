@@ -23,7 +23,6 @@ export const TicketList = ({messageToDisplay}) => {
         []
     )
 
-       
 
     const deleteTicket = (id) => {
         fetch(`http://localhost:8088/serviceTickets/${id}`, {
