@@ -51,7 +51,6 @@ export const TicketList = ({messageToDisplay}) => {
                     }}>Delete</button>
 
                 </p>
-            
                 })
             }
         </>
